@@ -1,0 +1,10 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+    <!-- 头部 -->
+    {{include './common/header.art'}}
+    <!-- /头部 -->
+    <!-- 主体内容 -->
+    {{include './common/aside.art'}}
+    <!-- /主体内容 -->
+{{/block}}
