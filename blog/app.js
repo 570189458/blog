@@ -3,8 +3,11 @@ const app = express()
 const home = require('./route/home')
 const admin = require('./route/admin')
 const path = require('path')
+const bodyParser = require('body-parser')
 
 require('./model/connect')
+
+app.use(bodyParser.urlencoded({extended : false}))
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'art')
