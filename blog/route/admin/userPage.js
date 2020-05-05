@@ -2,6 +2,9 @@ const { User } = require('../../model/user')
 
 module.exports = async (req, res) =>{
 
+    //当前访问用户管理标识
+    req.app.locals.currentLink = 'user'
+
     let page = req.query.page || 1
     let pagesize = 10
     let count = await User.countDocuments({})

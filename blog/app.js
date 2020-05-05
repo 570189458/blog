@@ -3,6 +3,8 @@ const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
 const session = require('express-session')
+const template = require('art-template')
+const dateFormate = require('dateformat')
 
 require('./model/connect')
 
@@ -19,6 +21,8 @@ app.use(session({
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'art')
 app.engine('art', require('express-art-template'))
+
+template.defaults.imports.dateFormate = dateFormate
 
 app.use(express.static(path.join(__dirname, 'public')))
 

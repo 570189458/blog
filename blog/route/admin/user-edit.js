@@ -1,6 +1,9 @@
 const { User } = require('../../model/user')
 
 module.exports = async (req, res) =>{
+
+    req.app.locals.currentLink = 'user'
+
     const { message, id } = req.query
 
     if(id) {
