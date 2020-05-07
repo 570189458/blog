@@ -66,5 +66,3 @@ module.exports = {
     User,
     validateUser
 }
-
-createUser()

@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const template = require('art-template')
 const dateFormate = require('dateformat')
+const morgan = require('morgan')
+const config = require('config')
 
 require('./model/connect')
 
@@ -25,6 +27,15 @@ app.engine('art', require('express-art-template'))
 template.defaults.imports.dateFormate = dateFormate
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+console.log(config.get('title'))
+
+if(process.env.NODE_ENV == 'development') {
+    console.log('开发环境')
+    app.use(morgan('dev'))
+}else {
+    console.log('生产环境')
+}
 
 const home = require('./route/home')
 const admin = require('./route/admin')
