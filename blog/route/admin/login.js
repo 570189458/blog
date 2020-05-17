@@ -12,9 +12,15 @@ module.exports = async (req, res)=>{
         let right = await bcrypt.compare(password, user.password)
         if(right){
             req.session.username = user.username
+            req.session.role = user.role
             // res.send('登陆成功')
             req.app.locals.userInfo = user
-            res.redirect('/admin/user')
+
+            if(user.role == 'admin') {
+                res.redirect('/admin/user')
+            }else {
+                res.redirect('/home/')
+            }
         }else{
             res.status(400).render('admin/error', {msg : '密码错误'})
         }

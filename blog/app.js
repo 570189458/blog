@@ -46,6 +46,7 @@ app.use('/home', home)
 app.use('/admin', admin)
 
 app.use((err, req, res, next)=>{
+    console.log(err)
     const result = JSON.parse(err)
     let params = []
     for (let attr in result) {
